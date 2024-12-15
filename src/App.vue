@@ -1,3 +1,13 @@
+<template>
+  <section>
+    <h1>{{ title }}</h1>
+    <input type="text" ref="name">
+    <button @click="handleClick">click Me</button>
+  </section>
+ 
+  </template>
+
+
 <script>
 export default{
   name: 'App',
@@ -5,13 +15,17 @@ export default{
     return{
       title:'My First App ;)'
     }
+  },
+  methods :{
+     handleClick(){
+      console.log(this.$refs.name)
+      this.$refs.name.classList.add('active')
+     }
   }
 }
 </script>
 
-<template>
-<h1>{{ title }}</h1>
-</template>
+
 
 <style scoped>
 #app{
