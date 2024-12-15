@@ -4,12 +4,14 @@
     <!-- <input type="text" ref="name" /> -->
     <!-- <button @click="handleClick">click Me</button> -->
     <div v-if="showModal">
-      <Modal
-        :header="header"
-        :text="text"
-        theme="not sale"
-        @close="ToggleModal"
-      />
+      <Modal theme="not sale" @close="ToggleModal">
+        <h1>this is real tryhard shit</h1>
+        <p>fuck la life nigga</p>
+
+        <template v-slot:links>
+          <a href="https://genshin.hoyoverse.com/fr/">genshin link for fun </a>
+        </template>
+      </Modal>
     </div>
     <button @click="ToggleModal">open modal</button>
   </section>
