@@ -1,44 +1,61 @@
 <template>
   <section>
     <h1>{{ title }}</h1>
-    <input type="text" ref="name">
-    <button @click="handleClick">click Me</button>
+    <!-- <input type="text" ref="name" /> -->
+    <!-- <button @click="handleClick">click Me</button> -->
+    <div v-if="showModal">
+      <Modal
+        :header="header"
+        :text="text"
+        theme="not sale"
+        @close="ToggleModal"
+      />
+    </div>
+    <button @click="ToggleModal">open modal</button>
   </section>
- 
-  </template>
-
+</template>
 
 <script>
-export default{
-  name: 'App',
-  data(){
-    return{
-      title:'My First App ;)'
-    }
+import Modal from "./components/Modal.vue";
+export default {
+  name: "App",
+  components: { Modal },
+  data() {
+    return {
+      title: "first vue App;)",
+      header: "welcome to my world",
+      showModal: false,
+      text: "write something here",
+    };
   },
-  methods :{
-     handleClick(){
-      console.log(this.$refs.name)
-      this.$refs.name.classList.add('active')
-     }
-  }
-}
+  methods: {
+    handleClick() {
+      console.log(this.$refs.name);
+      this.$refs.name.classList.add("active");
+    },
+    ToggleModal() {
+      this.showModal = !this.showModal;
+    },
+  },
+};
 </script>
 
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
 
-
-<style scoped>
-#app{
-  font-family: Arial, Helvetica, sans-serif;
+#app {
   text-align: center;
   color: rgb(2, 2, 70);
   margin-top: 60px;
 }
-h1{
-display: flex;
-justify-content: center;
-align-content: center;
-border-bottom: 1px solid lightpink;
-padding-bottom:10px ;
+h1 {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-bottom: 1px solid green;
+  padding-bottom: 10px;
 }
 </style>
