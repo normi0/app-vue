@@ -2,9 +2,12 @@
   <div class="Backdrop" @click.self="closeModal">
     <div class="modal" :class="{ sale: theme === 'sale' }">
       <slot></slot>
-      <slot name="links">
-        <button>click this</button>
-      </slot>
+      <div class="actions">
+        <slot name="links"></slot>
+      </div>
+      <div class="image-container">
+        <slot name="images"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -18,7 +21,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 * {
   margin: 0;
   padding: 0;
@@ -37,6 +40,44 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
 }
+.modal .actions {
+  text-align: center;
+  margin: 30px 0 10px 0;
+  color: darkblue;
+}
+.modal .actions a {
+  color: white;
+  padding: 8px;
+  border: 1px solid white;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 10px;
+}
+.modal .image-container {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  background: lightblue;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+}
+.modal .image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+.modal h1 {
+  color: lightseagreen;
+  border: none;
+  padding: 0;
+}
+.modal p {
+  font-style: normal;
+}
 .Backdrop {
   position: fixed;
   top: 0;
@@ -49,6 +90,9 @@ h1 {
 
 .modal.sale {
   background-color: crimson;
+  color: white;
+}
+.modal.sale h1 {
   color: white;
 }
 </style>
